@@ -5,38 +5,51 @@ These are the notes from a meeting with the frontend developer that describe wha
 
 ## API Endpoints
 #### Products
-- Index 
-- Show
-- Create [token required]
-- [OPTIONAL] Top 5 most popular products 
-- [OPTIONAL] Products by category (args: product category)
+- Index [GET] /products 
+- Show [GET] /products/:id
+- Create [POST] /products [token required]
+- Update [PUT] /products/:id [token required]
+- Delete [DELETE] /products/:id [token required]
 
 #### Users
-- Index [token required]
-- Show [token required]
-- Create N[token required]
+- Index [GET] /users [token required]
+- Show [GET] /users/:id [token required]
+- Create [POST] /users
+- Update [PUT] /users/:id [token required]
+- Delete [DELETE] /users/:id [token required]
+- Login [POST] /users/login
 
 #### Orders
-- Current Order by user (args: user id)[token required]
-- [OPTIONAL] Completed Orders by user (args: user id)[token required]
+- Index [GET] /orders [token required]
+- Show [GET] /orders/:id [token required]
+- Create [POST] /orders [token required]
+- Update [PUT] /orders/:id [token required]
+- Delete [DELETE] /orders/:id [token required]
+- Current Order by user (args: user id) [GET] /orders/user/:user_id [token required]
+- Add product to an order (args: order_id) [POST] /order/:id/products [token required]
 
 ## Data Shapes
 #### Product
--  id
-- name
-- price
-- [OPTIONAL] category
+- id SERIAL PRIMARY KEY, 
+- name VARCHAR(255) NOT NULL, 
+- price integer NOT NULL, 
+- category VARCHAR(255)
 
 #### User
-- id
-- firstName
-- lastName
-- password
+- id SERIAL PRIMARY KEY,
+- username VARCHAR(255) NOT NULL UNIQUE,
+- firstName VARCHAR(255), 
+- lastName VARCHAR(255), 
+- password VARCHAR(255) NOT NULL
 
 #### Orders
-- id
-- id of each product in the order
-- quantity of each product in the order
-- user_id
-- status of order (active or complete)
+- id SERIAL PRIMARY KEY,
+- status VARCHAR(65),
+- user_id BIGINT REFERENCES users(id)
+
+#### Order_products
+- id SERIAL PRIMARY KEY,
+- quantity INTEGER NOT NULL,
+- order_id BIGINT REFERENCES orders(id),
+- product_id BIGINT REFERENCES products(id)
 
