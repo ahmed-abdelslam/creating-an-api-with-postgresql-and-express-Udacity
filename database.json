@@ -3,20 +3,20 @@
         "driver": "pg",
         "host": "127.0.0.1",
         "database": "udacity_store_front",
-        "user": "postgres",
-        "password": ""
+        "user": "udacity_user",
+        "password": "password"
     },
     "test": {
         "driver": "pg",
         "host": "127.0.0.1",
         "database": "udacity_store_front_test",
-        "user": "postgres",
-        "password": ""
+        "user": "udacity_user",
+        "password": "password"
     },
     "init": {
         "driver": "pg",
         "host": "127.0.0.1",
-        "user": "postgres",
-        "password": ""
+        "user": "udacity_user",
+        "password": "password"
     }
 }

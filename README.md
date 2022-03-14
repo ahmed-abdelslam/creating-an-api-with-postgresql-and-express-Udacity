@@ -1,19 +1,22 @@
 # Storefront Backend Project
 
-## Getting Started
-
-First run `npm i` to install packages.
-
-## Required Technologies
-Your device should have the following:
-- Postgres for the database
-- db-migrate for migrations `npm i -g db-migrate`
+## Install Packages
+- First run `npm i` to install packages.
+- install db-migrate globally `npm i -g db-migrate`
 
 ## DB Creation and Migrations
 
-1. Change the postgres user and password in both `.env` and `database.json`. And make sure yours potsgress' host is `127.0.0.1` and the port is `5432`.
-2. run `npm run db-create` to create the database
-3. run `db-migrate up`
+1. In your terminal run `psql -U postgres`
+2. Create a user `CREATE USER udacity_user WITH PASSWORD 'password';`
+3. Create the two databases: 
+    `CREATE DATABASE udacity_store_front;`
+    `CREATE DATABASE udacity_store_front_test;`
+4. Grant all priviliges to our user
+    `GRANT ALL PRIVILEGES ON DATABASE udacity_store_front TO udacity_user;`
+    `GRANT ALL PRIVILEGES ON DATABASE udacity_store_front_test TO udacity_user;`
+5. run `db-migrate up`
+
+Now you can access the database from `127.0.0.1:5432`
 
 ## Start the server
 
