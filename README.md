@@ -24,5 +24,5 @@ Run `npm run watch`.
 You can access the app from `127.0.0.1:3000`
 
 ## Test models and endpoints
-
+ 
 Run `npm run test`
